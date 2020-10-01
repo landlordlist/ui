@@ -4,12 +4,16 @@
         <router-link to="/"><img src="./../assets/logo.svg"></router-link>
     </article>
   </header>
+  <section id="balance" class="ll container strip">
+      <article class="section banner">
+        <p>
+            <router-link to="/">&larr; Back</router-link>
+        </p>
+        <h1>About</h1>
+      </article>
+  </section>
   <main class="home ll container">
     <article class="section">
-      <p>
-        <router-link to="/">&larr; Back</router-link>
-      </p>
-      <h1 class="text-primary">About</h1>
       <p>
         Landlord List is a site put together by a few volunteers with the aim of highlighting the issue of
         landlords' interests having an increasing impact on our society.
@@ -66,6 +70,18 @@
     align-items: center;
   }
 
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .88rem;
+}
+
+.strip {
+    background-color: #fff;
+    border-bottom: 1px solid darken(#fff, 10%)
 }
 
 </style>
