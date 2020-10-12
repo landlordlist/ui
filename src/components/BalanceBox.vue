@@ -1,21 +1,21 @@
 <template>
     <section id="balance" class="ll container">
     <article class="section">
-        <div class="card">
-            <header class="card-header">
-                <h2 class="card-title h3">Balance</h2>
+
+            <header>
                 <ul class="tab">
-                    <li :class="`tab-item ${isOverall ? 'active' : ''}`">
-                        <a @click.prevent="isOverall=true" href="#">Overall</a>
-                    </li>
                     <li :class="`tab-item ${isOverall ? '' : 'active'}`">
                         <a @click.prevent="isOverall=false" href="#" class="">By Party</a>
                     </li>
+                    <li :class="`tab-item ${isOverall ? 'active' : ''}`">
+                        <a @click.prevent="isOverall=true" href="#">Overall</a>
+                    </li>
                 </ul>
             </header>
-            <section class="card-body" v-if="isOverall">
+
+            <section class="flex" v-if="isOverall">
                 <section>
-                    <p class="text-primary h5">Landlords ({{ landlordCount }})</p>
+                    <p class="ll h5">Landlords ({{ landlordCount }})</p>
                     <div class="grid">
                         <div class="dot ll" v-for="i in landlordCount" v-bind:key="i"></div>
                     </div>
@@ -27,10 +27,13 @@
                     </div>
                 </section>
             </section>
-            <section class="card-body" v-if="!isOverall">
+
+            <section class="flex" v-if="!isOverall">
                 <template v-for="(party, i) in parties" v-bind:key="i">
                     <section :style="`flex-basis: ${(party.members/memberCount)*100}%`">
-                        <p class="h5">{{ party.abbr || 'None' }}</p>
+                        <p class="h5">
+                            <abbr :title="party.name">{{ party.abbr || 'None' }}</abbr>
+                        </p>
                         <div class="grid">
                             <div class="dot ll" v-for="i in party.landlords" v-bind:key="i" :style="`background-color: #${party.colour}`"></div>
                             <div class="dot" v-for="i in (party.members-party.landlords)" v-bind:key="i" :style="`border-color: #${party.colour}`"></div>
@@ -38,17 +41,15 @@
                     </section>
                 </template>
             </section>
-            <div class="card-footer">
-                <ul>
-                    <li>
-                        <div class="dot ll"></div> Landlord
-                    </li>
-                    <li>
-                        <div class="dot"></div> Not a landlord
-                    </li>
-                </ul>
-            </div>
-        </div>
+
+            <ul class="footer">
+                <li>
+                    <div class="dot ll"></div> Landlord
+                </li>
+                <li>
+                    <div class="dot"></div> Not a landlord
+                </li>
+            </ul>
     </article>
 </section>
 </template>
@@ -118,9 +119,18 @@ export default {
 
 <style lang="scss" scoped>
 #balance {
-    padding-top: .88rem;
+    margin: 0 0 .5rem;
+    padding: 0 .33rem 1rem;
 
-    .card-body {
+    .ll {
+        color: darken(salmon, 11%);
+    }
+
+    header {
+        margin: 0 0 1rem;
+    }
+
+    .flex {
         display: flex;
         align-items: flex-start;
 
@@ -130,7 +140,7 @@ export default {
     }
 
     .h5 {
-        margin: 0;
+        margin: 0 0 .33rem;
         padding-right: .33rem;
     }
 
@@ -154,7 +164,7 @@ export default {
         }
     }
 
-    .card-footer ul {
+    ul.footer {
         display: flex;
         align-items: center;
         list-style-type: none;

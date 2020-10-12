@@ -4,14 +4,22 @@
         <router-link to="/"><img src="./../assets/logo.svg"></router-link>
     </article>
   </header>
-  <section id="balance" class="ll container strip">
+
+  <section class="ll container">
       <article class="section banner">
-        <p>
-            <router-link to="/">&larr; Back</router-link>
-        </p>
-        <h1>About</h1>
+          <router-link to="/">
+              <i class="icon icon-back"></i>
+              Back
+          </router-link>
       </article>
   </section>
+
+  <section class="ll container">
+      <header class="section banner">
+          <h1>About</h1>
+      </header>
+  </section>
+
   <main class="home ll container">
     <article class="section">
       <p>
@@ -47,10 +55,6 @@
       <p>We do aim to add information on Scottish MPs, members of the Welsh Assembly, and members of the Northern Irish Assembly 
         in due course. The information is available but requires us to analyse it and add it to this site.</p>
       <p>We'll also need to update this site to handle those bodies so, it won't be soon!</p>
-
-      <p>
-        <router-link to="/">&larr; Back</router-link>
-      </p>
     </article>
   </main>
 </template>
@@ -59,9 +63,9 @@
 #site-header {
 
   img {
-    max-height: 80px;
-    width: min-content;
-    margin: .44rem 0;
+    width: clamp(100px, 200px, 45vw);
+    min-height: 50px;
+    margin: 0;
   }
 
   > .section {

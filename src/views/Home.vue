@@ -9,9 +9,12 @@
         Why you ask? Because our economy and democracy is increasingly being run in the interests
         of landlords, owners, and developers - and to the detriment of the ordinary person. This is very bad. Click to read more.
       </p>
-      <p class="link">
-        <router-link to="/about">Read more &rarr;</router-link>
-      </p>
+      <div class="link">
+        <router-link to="/about">
+          Read more
+          <i class="icon icon-forward"></i>
+        </router-link>
+      </div>
     </section>
   </header>
   <!-- <div id="nav">
@@ -48,15 +51,17 @@ export default {
     text-align: left;
     color: rgba(0,0,0,.68);
     font-size: 1.22em;
+  }
 
-    &.link {
-      text-align: right;
-    }
+  div.link {
+    display: flex;
+    justify-content: flex-end;
   }
 
   img {
     width: clamp(200px, 450px, 75vw);
-    margin: 1.33rem 0 2rem;
+    min-height: 100px;
+    margin: .33rem 0 1.5rem;
   }
 }
 </style>

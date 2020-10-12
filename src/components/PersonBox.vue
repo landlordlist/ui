@@ -1,5 +1,5 @@
 <template>
-    <article class="card">
+    <button class="card">
         <div class="card-header">
             <img class="avatar" :src="member.avatar_url">
             <div>
@@ -13,11 +13,10 @@
             </div>
         </div>
         <div class="card-footer">
-            <p class="landlord text-primary" v-if="member.is_landlord">Landlord</p>
+            <p class="landlord" v-if="member.is_landlord">Landlord</p>
             <p class="not text-gray" v-if="!member.is_landlord">Not A Landlord</p>
-            <button v-if="member.is_landlord" class="btn btn-link">Details</button>
         </div>
-    </article>
+    </button>
 </template>
 
 <script>
@@ -31,6 +30,14 @@ export default {
 
 
 <style lang="scss" scoped>
+button {
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 0 3px whitesmoke;
+    }
+}
+
 img.avatar {
     object-fit: cover;
     height: 100px;
@@ -43,8 +50,11 @@ img.avatar {
 
 .card-header {
     display: flex;
+    width: 100%;
+
     > div {
         width: 100%;
+        text-align: left;
     }
 }
 
@@ -53,6 +63,7 @@ img.avatar {
     text-transform: uppercase;
     font-weight: 900;
     border: 3px solid salmon;
+    color: darken(salmon, 10%);
     padding: .1em .2em;
     line-height: 1em;
     margin: 0;
